@@ -53,5 +53,4 @@ plt.ylabel('PCA2')
 
 # Add color legend
 plt.legend()
-plt.colorbar()
 st.pyplot(plt)
