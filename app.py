@@ -31,7 +31,7 @@ kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 y_kmeans = kmeans.fit_predict(X_pca)
 
 # Define a custom colormap (e.g., "viridis", "plasma", "inferno")
-colors = plt.cm.magma(np.linspace(0, 1, num_clusters))  # Using the 'viridis' colormap
+colors = plt.cm.plasma(np.linspace(0, 1, num_clusters))  # Using the 'viridis' colormap
 
 # Plot clusters without centroids
 plt.figure(figsize=(8, 6))
