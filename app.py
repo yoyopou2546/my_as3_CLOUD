@@ -21,9 +21,6 @@ st.set_page_config(page_title="K-Means Clustering App", layout="centered")
 # Title
 st.title("🔍 K-Means Clustering App with Iris Dataset")
 
-# Display section header
-st.subheader("📊 Clusters (2D PCA Projection)")
-st.markdown("This demo uses the Iris dataset to illustrate clustering results. You can adjust the number of clusters below.")
 
 # Sidebar for user interaction
 st.sidebar.header("Configure Clustering")
@@ -51,7 +48,7 @@ centers = kmeans.cluster_centers_
 plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o', label="Centroids")
 
 # Add title and labels
-plt.title(f'K-Means Clustering (k={num_clusters}) - Iris Dataset')
+plt.title(f'Clusters (2D PCA Projection) - Iris Dataset')
 plt.xlabel('PCA1')
 plt.ylabel('PCA2')
 
