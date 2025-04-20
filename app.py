@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr 20 15:06:42 2025
+
+@author: yoyop
+"""
+
 # app.py
 import streamlit as st
 import pickle
@@ -30,8 +37,8 @@ X_pca = pca.fit_transform(X)
 kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 y_kmeans = kmeans.fit_predict(X_pca)
 
-# Define a custom colormap (e.g., "viridis", "plasma", "inferno")
-colors = plt.cm.plasma(np.linspace(0, 1, num_clusters))  # Using the 'viridis' colormap
+# Define a custom color palette from tab10 (good for distinct clusters)
+colors = plt.cm.tab10(np.linspace(0, 1, num_clusters))  # Tab10 colormap
 
 # Plot clusters without centroids
 plt.figure(figsize=(8, 6))
