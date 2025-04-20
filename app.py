@@ -39,7 +39,7 @@ kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 y_kmeans = kmeans.fit_predict(X_pca)
 
 # Define a set of distinct colors
-colors = plt.cm.get_cmap("tab10", num_clusters)  # Tab10 colormap is good for distinct colors
+colors = plt.cm.viridis(np.linspace(0, 1, num_clusters))
 
 # Plot clusters without centroids
 plt.figure(figsize=(8, 6))
