@@ -21,7 +21,6 @@ st.set_page_config(page_title="K-Means Clustering App", layout="centered")
 # Title
 st.title("🔍 K-Means Clustering App with Iris Dataset")
 
-
 # Sidebar for user interaction
 st.sidebar.header("Configure Clustering")
 num_clusters = st.sidebar.slider("Select number of Clusters", min_value=2, max_value=10, value=3)
@@ -39,11 +38,15 @@ X_pca = pca.fit_transform(X)
 kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 y_kmeans = kmeans.fit_predict(X_pca)
 
+# Define a set of distinct colors
+colors = plt.cm.get_cmap("tab10", num_clusters)  # Tab10 colormap is good for distinct colors
+
 # Plot clusters
 plt.figure(figsize=(8, 6))
-scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y_kmeans, s=50, cmap='viridis')
+for i in range(num_clusters):
+    plt.scatter(X_pca[y_kmeans == i, 0], X_pca[y_kmeans == i, 1], c=[colors(i)], s=50, label=f"Cluster {i}")
 
-# Add cluster labels
+# Add cluster centroids with red circles
 centers = kmeans.cluster_centers_
 plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o', label="Centroids")
 
@@ -52,7 +55,7 @@ plt.title(f'Clusters (2D PCA Projection)')
 plt.xlabel('PCA1')
 plt.ylabel('PCA2')
 
-# Add color legend
+# Add legend and color bar
 plt.legend()
-plt.colorbar(scatter)
+plt.colorbar()
 st.pyplot(plt)
