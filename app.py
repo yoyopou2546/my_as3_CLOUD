@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 20 15:06:42 2025
-
-@author: yoyop
-"""
-
-
 # app.py
 import streamlit as st
 import pickle
@@ -38,13 +30,13 @@ X_pca = pca.fit_transform(X)
 kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 y_kmeans = kmeans.fit_predict(X_pca)
 
-# Define a set of distinct colors
-colors = plt.cm.viridis(np.linspace(0, 1, num_clusters))
+# Define a custom colormap (e.g., "viridis", "plasma", "inferno")
+colors = plt.cm.viridis(np.linspace(0, 1, num_clusters))  # Using the 'viridis' colormap
 
 # Plot clusters without centroids
 plt.figure(figsize=(8, 6))
 for i in range(num_clusters):
-    plt.scatter(X_pca[y_kmeans == i, 0], X_pca[y_kmeans == i, 1], c=[colors(i)], s=50, label=f"Cluster {i}")
+    plt.scatter(X_pca[y_kmeans == i, 0], X_pca[y_kmeans == i, 1], c=[colors[i]], s=50, label=f"Cluster {i}")
 
 # Add title and labels
 plt.title(f'Clusters (2D PCA Projection)')
