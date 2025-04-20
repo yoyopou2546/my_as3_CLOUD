@@ -41,21 +41,17 @@ y_kmeans = kmeans.fit_predict(X_pca)
 # Define a set of distinct colors
 colors = plt.cm.get_cmap("tab10", num_clusters)  # Tab10 colormap is good for distinct colors
 
-# Plot clusters
+# Plot clusters without centroids
 plt.figure(figsize=(8, 6))
 for i in range(num_clusters):
     plt.scatter(X_pca[y_kmeans == i, 0], X_pca[y_kmeans == i, 1], c=[colors(i)], s=50, label=f"Cluster {i}")
-
-# Add cluster centroids with red circles
-centers = kmeans.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o', label="Centroids")
 
 # Add title and labels
 plt.title(f'Clusters (2D PCA Projection)')
 plt.xlabel('PCA1')
 plt.ylabel('PCA2')
 
-# Add legend and color bar
+# Add color legend
 plt.legend()
 plt.colorbar()
 st.pyplot(plt)
