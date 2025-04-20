@@ -48,7 +48,7 @@ centers = kmeans.cluster_centers_
 plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o', label="Centroids")
 
 # Add title and labels
-plt.title(f'Clusters (2D PCA Projection) - Iris Dataset')
+plt.title(f'Clusters (2D PCA Projection)')
 plt.xlabel('PCA1')
 plt.ylabel('PCA2')
 
